@@ -1,0 +1,21 @@
+extends ../shared/template
+
+block content
+  h2 Artist Show Page
+
+
+
+  table
+    thead
+      th Title
+      th Song
+      th Album
+      th Artist
+    tbody
+      each song in songs
+        tr
+          td= song.title
+          td
+            audio(src='/audios/songs/#{song._id}/#{song.file}', controls=true)
+          td= song.album
+          td= song.artist

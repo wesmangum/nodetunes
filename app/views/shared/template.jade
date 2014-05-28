@@ -7,6 +7,12 @@ html
     link(href='/css/buttons.css', rel='stylesheet')
     link(href='/less/app.css', rel='stylesheet')
   body
+    nav
+      a.button.button-flat.button-rounded(href='/') Home
+      a.button.button-flat.button-rounded(href='/artists') Artists
+      a.button.button-flat.button-rounded(href='/albums') Albums
+      a.button.button-flat.button-rounded(href='/songs') Songs
+
     block content
 
     script(src='/js/vendor/jquery-2.1.1.js')

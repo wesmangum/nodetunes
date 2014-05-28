@@ -1,0 +1,20 @@
+extends ../shared/template
+
+block content
+  h2 Artist List
+
+  form#post(method='POST' action='/artists', enctype='multipart/form-data')
+    input(type='text', name='name', placeholder='Artist Name', autofocus=true)
+    input(type='file', name='photo')
+    button.button Add Artist
+
+  table
+    thead
+      th Name
+      th Photo
+    tbody
+      each artist in artists
+        tr
+          td
+            a(href='/artists/#{artist._id}')= artist.name
+          td: img(src='/img/artists/#{artist._id}/#{artist.photo}')

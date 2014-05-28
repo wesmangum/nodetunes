@@ -1,0 +1,58 @@
+extends ../shared/template
+
+block content
+  h2 Song List
+
+  form#post(method='POST' action='/songs', enctype='multipart/form-data')
+    input(type='text', name='title', placeholder='Song Title', autofocus=true)
+    select(name='genre')
+      option Select Genre
+      option(value='rock') Rock
+      option(value='indie') Indie
+      option(value='pop') Pop
+      option(value='rap') Rap
+      option(value='rb') R&B
+      option(value='folk') Folk
+      option(value='techno') Techno
+      option(value='country') Country
+      option(value='jazz') Jazz
+    input(type='file', name='song')
+    select(name='album')
+      option Select Album
+      each album in albums
+        option(value='#{album._id}')= album.title
+    a(href='/albums') Create New Album
+    button.button Add Song
+
+  form#filter(method='GET' action='/songs/filter')
+    label Filter by Genre
+    select(name='genre')
+      option Select Genre
+      option(value='rock') Rock
+      option(value='indie') Indie
+      option(value='pop') Pop
+      option(value='rap') Rap
+      option(value='rb') R&B
+      option(value='folk') Folk
+      option(value='techno') Techno
+      option(value='country') Country
+      option(value='jazz') Jazz
+    button.button Filter
+
+
+  table
+    thead
+      th Title
+      th Song
+      th Album
+      th Artist
+      th Genre
+    tbody
+      each song in songs
+        tr
+          td= song.title
+          td
+            audio(src='/audios/songs/#{song._id}/#{song.file}', controls=true)
+          td= song.album
+          td= song.artist
+          td= song.genre

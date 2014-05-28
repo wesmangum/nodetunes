@@ -21,7 +21,8 @@
     "body-parser":     "*",
     "morgan":          "*",
     "method-override": "*",
-    "traceur":         "*"
+    "traceur":         "*",
+    "multiparty":      "*"
   },
   "devDependencies": {
     "grunt":                "*",

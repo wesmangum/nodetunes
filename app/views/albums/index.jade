@@ -1,0 +1,25 @@
+extends ../shared/template
+
+block content
+  h2 Album List
+
+  form#post(method='POST' action='/albums', enctype='multipart/form-data')
+    input(type='text', name='title', placeholder='Album Title', autofocus=true)
+    input(type='file', name='cover', placeholder='Cover Art')
+    select(name='artist')
+      option Select Artist
+      each artist in artists
+        option(value='#{artist._id}')= artist.name
+    a(href='/artists') Create New Artist
+    button.button Add Album
+
+  table
+    thead
+      th Title
+      th Cover
+    tbody
+      each album in albums
+        tr
+          td
+            a(href='/albums/#{album._id}')= album.title
+          td: img(src='/img/albums/#{album._id}/#{album.cover}')
